@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This project is a vibrant, interactive simulation of the classic double-slit interference experiment—a quantum phenomenon that showcases the wave-particle duality of light and matter. By combining the raw power of quantum physics with modern web technologies
 
-## Getting Started
+## Key Features:
 
-First, run the development server:
+Real-Time Quantum Dynamics:
+The simulation uses a dynamic heatmap that scrolls over time, where each new row represents the evolving interference pattern computed via a quantum model.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Interactive Controls:
+Users can adjust key parameters—including the positions of the two slits, the Gaussian envelope parameter (t), and the wave number (k)—via intuitive sliders. This allows for on-the-fly exploration of how changes in these parameters affect the interference pattern.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deep Physics Under the Hood:
+The simulation is powered by a C++ module compiled to WebAssembly with Emscripten. The underlying model approximates the amplitude from each slit using:
+    <br><code>A(d) = exp(-d²/(2t)) · cos(k·d) / (d + ε)</code>
+where d is the distance from the slit to the detection screen. The total amplitude is computed as the sum from both slits, and the intensity is given by the square of this total amplitude (<code>I = |A_total|²</code>).
